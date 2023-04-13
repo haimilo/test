@@ -1,0 +1,7 @@
+<div class="title">Favorites</div>
+<div #gifsContainer class="gifsContainer">
+  <div *ngIf="GIFs?.length === 0" class="empty-favorites">
+    You haven't added any GIFs to your favorites list yet,
+  </div>
+  <app-gifs-list [GIFs]="GIFs" [isLoading]="false"></app-gifs-list>
+</div>

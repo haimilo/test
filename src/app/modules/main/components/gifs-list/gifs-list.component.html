@@ -1,0 +1,40 @@
+<div class="gifsWrapper">
+  <div *ngFor="let gif of GIFs; trackBy: trackByFn" class="item">
+    <div class="gifCard" (click)="openDialog(gif)">
+      <div *ngIf="gifLoaded[gif.id]" class="top-info">
+        <i
+          appFavoriteStatus
+          [gif]="gif"
+          (click)="onAddToFavorites(gif); $event.stopPropagation()"
+          class="fa fa-heart heartIcon"
+        ></i>
+      </div>
+      <img
+        [hidden]="!gifLoaded[gif.id]"
+        [src]="gif.images.fixed_width_downsampled.url"
+        alt="{{ gif.title }}"
+        (load)="onGifLoad(gif.id)"
+      />
+      <div *ngIf="gifLoaded[gif.id]" class="bottom-info">
+        <ng-container *ngIf="gif.username; else secretUser">
+          <i class="fa fa-user"></i>
+          <span class="userName">{{ gif.username }}</span>
+        </ng-container>
+        <ng-template #secretUser>
+          <i class="fa fa-user-secret"></i>
+        </ng-template>
+      </div>
+    </div>
+
+    <ng-container *ngIf="!gifLoaded[gif.id]">
+      <div
+        class="skeleton"
+        appRandomColor
+        [style.height.px]="gif.images.fixed_width_downsampled.height"
+      ></div>
+    </ng-container>
+  </div>
+</div>
+<ng-container *ngIf="isLoading">
+  <app-spinner-loading></app-spinner-loading>
+</ng-container>

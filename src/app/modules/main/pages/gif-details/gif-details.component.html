@@ -1,0 +1,30 @@
+<div class="title">GIF Details</div>
+
+<div *ngIf="gifData" class="gif-container">
+  <img
+    [hidden]="!gifLoaded"
+    [src]="gifData.images.downsized.url"
+    alt="{{ gifData.title }}"
+    (load)="onGifLoad()"
+  />
+  <div
+    *ngIf="!gifLoaded"
+    class="skeleton"
+    appRandomColor
+    [style.height.px]="gifData.images.downsized.height"
+  ></div>
+</div>
+
+<div *ngIf="gifData === null" class="error-message">
+  <span class="error-icon">
+    <i class="fa fa-exclamation-circle"></i>
+  </span>
+  <span class="error-text">
+    Oops! Something went wrong while loading the GIF. Please check your internet
+    connection and try again.
+  </span>
+</div>
+
+<ng-container *ngIf="isLoading">
+  <app-spinner-loading></app-spinner-loading>
+</ng-container>

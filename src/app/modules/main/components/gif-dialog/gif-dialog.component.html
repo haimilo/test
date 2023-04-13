@@ -1,0 +1,25 @@
+<div *ngIf="data?.gifData as gifData" class="gif-details">
+  <div class="gif-container">
+    <img
+      class="img"
+      [hidden]="loading"
+      [src]="gifData.images.downsized.url"
+      alt="{{ gifData.title }}"
+      (load)="onImageLoad()"
+    />
+    <div
+      *ngIf="loading"
+      class="skeleton"
+      appRandomColor
+      [style.height.px]="gifData.images.downsized.height"
+    ></div>
+  </div>
+  <div class="info-container">
+    <div class="gif-name">
+      {{ gifData.title }}
+    </div>
+    <div class="rating">
+      <i class="fas fa-star"></i> {{ gifData.rating | uppercase }}
+    </div>
+  </div>
+</div>

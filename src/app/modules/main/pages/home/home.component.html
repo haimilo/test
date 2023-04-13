@@ -1,0 +1,23 @@
+<div class="search-container">
+  <form [formGroup]="searchForm" (ngSubmit)="onSearch()" class="search">
+    <input
+      id="searchKey"
+      name="searchKey"
+      formControlName="searchKey"
+      type="text"
+      class="search-term"
+      placeholder="What are you looking for?"
+    />
+    <button [disabled]="isLoading" type="submit" class="search-button">
+      <i class="fa fa-search"></i>
+    </button>
+  </form>
+</div>
+
+<div class="title">
+  {{ title ? title + " GIFs" : "Trending GIFs" }}
+</div>
+
+<div #gifsContainer class="gifs-container">
+  <app-gifs-list [GIFs]="GIFs" [isLoading]="isLoading"></app-gifs-list>
+</div>

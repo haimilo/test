@@ -1,0 +1,41 @@
+@import "../../../../../styles/variables";
+
+.search-container {
+  width: 100%;
+  margin-top: 1rem;
+
+  .search {
+    display: flex;
+  }
+
+  .search-term {
+    width: 100%;
+    border: 2px solid $blue_1;
+    border-right: none;
+    outline: none;
+    padding: 0.5rem;
+    border-radius: 0.5rem 0 0 0.5rem;
+    color: #9dbfaf;
+    background-color: transparent;
+  }
+
+  .search-term:focus {
+    color: $blue_1;
+    background-color: transparent;
+  }
+
+  .search-button {
+    width: 4rem;
+    border: 2px solid $blue_1;
+    background: $blue_1;
+    text-align: center;
+    color: $white_1;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+  }
+}
+
+.title {
+  padding: 0.5rem;
+}
